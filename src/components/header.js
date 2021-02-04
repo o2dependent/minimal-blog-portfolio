@@ -1,14 +1,18 @@
 import { Link } from "gatsby"
+import { doc } from "prettier"
 import PropTypes from "prop-types"
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import useSound from "use-sound"
 import darkPop from "../sounds/darkPop.wav"
 import lightPop from "../sounds/lightPop.wav"
 
 const Header = ({ siteTitle }) => {
   // --- hooks ---
+  // useSound
   const [playDark] = useSound(darkPop, { volume: 0.25 })
   const [playLight] = useSound(lightPop, { volume: 0.25 })
+  // state
+  const [isNavOpen, setIsNavOpen] = useState(false)
 
   // check for dark mode
   useEffect(() => {
@@ -34,8 +38,8 @@ const Header = ({ siteTitle }) => {
   }
 
   return (
-    <header className="w-full sticky z-50 top-0 transition-colors h-15 bg-gray-200 dark:bg-gray-900">
-      <nav className="container h-full mx-auto flex justify-between px-4">
+    <header className="w-full sticky z-20 top-0 transition-colors h-15 bg-none md:bg-gray-200 md:dark:bg-gray-900">
+      <nav className="hidden container h-full mx-auto md:flex justify-between px-4">
         <div className="flex h-full items-end gap-x-4">
           <h2 className="hover:border-b-1 border-b-0 border-gray-500 text-2xl font-normal m-0 flex items-center mb-3">
             <Link to="/">Ethan Olsen</Link>
@@ -79,6 +83,54 @@ const Header = ({ siteTitle }) => {
           <button className="max-h-10 h-full transition-colors dark:text-gray-900 text-gray-200 font-medium rounded bg-red-500 dark:bg-blue-400 w-23">
             <Link to="contact">contact</Link>
           </button>
+        </div>
+      </nav>
+      <div
+        className={`flex md:hidden h-4 w-4 bottom-2 right-2 shadow-md rounded-full fixed bg-gray-200 dark:bg-gray-900 p-8`}
+      ></div>
+      <nav
+        className={`flex md:hidden z-20 fixed top-0 left-0 w-full h-full transition-colors bg-gray-200 dark:bg-gray-900 p-8`}
+        style={{
+          clipPath: isNavOpen
+            ? "circle(100% at 50% 50%)"
+            : "circle(2rem at calc(100% - 2.5rem) calc(100% - 2.5rem))",
+          transition: "clip-path 750ms ease",
+        }}
+      >
+        <button
+          onClick={() => setIsNavOpen(!isNavOpen)}
+          className="absolute origin-center transform translate-y-2/4 translate-x-2/4 bottom-10 right-10 h-10 w-10 rounded-full focus:outline-none"
+        >
+          <svg
+            fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg"
+            width="2rem"
+            height="2rem"
+            viewBox="0 0 18 24"
+          >
+            <path d="M12 18c1.657 0 3 1.343 3 3s-1.343 3-3 3-3-1.343-3-3 1.343-3 3-3zm0-9c1.657 0 3 1.343 3 3s-1.343 3-3 3-3-1.343-3-3 1.343-3 3-3zm0-9c1.657 0 3 1.343 3 3s-1.343 3-3 3-3-1.343-3-3 1.343-3 3-3z" />
+          </svg>
+        </button>
+        <div className="flex flex-col w-full gap-4">
+          <button
+            onClick={toggleDarkMode}
+            className="h-12 w-full rounded bg-red-500 dark:bg-blue-400"
+          ></button>
+          <h2 className="flex align-center justify-center h-12 w-full rounded bg-gray-600">
+            <Link to="/" className="text-center align-middle">
+              Ethan Olsen
+            </Link>
+          </h2>
+          <h3 className="flex align-center justify-center h-12 w-full rounded bg-gray-600">
+            <Link to="/posts" className="text-center align-middle">
+              Posts
+            </Link>
+          </h3>
+          <h3 className="flex align-center justify-center h-12 w-full rounded bg-gray-600">
+            <Link to="/projects" className="text-center align-middle">
+              Projects
+            </Link>
+          </h3>
         </div>
       </nav>
     </header>
