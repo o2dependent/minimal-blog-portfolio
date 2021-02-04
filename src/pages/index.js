@@ -1,34 +1,55 @@
 import React from "react"
 
-import Layout from "../components/layout"
 import SEO from "../components/seo"
 import PostCard from "../components/PostCard"
 import { Link } from "gatsby"
+import Img from "gatsby-image"
 
-const IndexPage = () => {
-  const test = [
-    {
-      title: "The styled-components happy path",
-      desc:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis lacus pretium at convallis. Quis massa malesuada vulputate mi aliquet odio.",
-      slug: "nothing",
-    },
-    {
-      title: "The styled-components happy path",
-      desc:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis lacus pretium at convallis. Quis massa malesuada vulputate mi aliquet odio.",
-      slug: "nothing",
-    },
-    {
-      title: "The styled-components happy path",
-      desc:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis lacus pretium at convallis. Quis massa malesuada vulputate mi aliquet odio.",
-      slug: "nothing",
-    },
-  ]
+// --- query ---
+export const query = graphql`
+  query IndexPage {
+    BlogPosts: allDatoCmsBlogPost(limit: 2) {
+      edges {
+        node {
+          title
+          preview
+          slug
+        }
+      }
+    }
+    Projects: allDatoCmsProjectPost(limit: 3) {
+      edges {
+        node {
+          title
+          preview
+          slug
+        }
+      }
+    }
+    Index: datoCmsIndex {
+      introduction
+      introPhoto {
+        fluid(
+          forceBlurhash: false
+          imgixParams: { fm: "jpg", auto: "compress" }
+        ) {
+          ...GatsbyDatoCmsFluid
+        }
+      }
+    }
+  }
+`
+
+const IndexPage = ({ data }) => {
+  // --- variables ---
+  const posts = data.BlogPosts.edges.map(e => e.node)
+  const projects = data.Projects.edges.map(e => e.node)
+  const index = data.Index.introduction
+  const indexPhoto = data.Index.introPhoto
+  console.log({ posts, projects, index, indexPhoto })
 
   return (
-    <Layout>
+    <>
       <SEO title="Home" />
       <div className="container md:mt-25 mt-10 mx-auto">
         {/* --- --- DARK MODE --- --- */}
@@ -273,16 +294,10 @@ const IndexPage = () => {
         <div className="container mx-auto px-4">
           <h2 className=" text-4xl font-semibold">About me</h2>
           <div className="md:flex gap-8">
-            <p className="flex-grow">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tellus in
-              amet pellentesque ridiculus lectus. Justo non blandit est diam
-              mattis id justo, ultrices orci. Fermentum nunc, velit mi convallis
-              nisi sollicitudin tincidunt. Ullamcorper interdum aliquam
-              convallis nisl odio vitae.
-            </p>
-            <img
-              className="w-96 rounded"
-              src="https://images.unsplash.com/photo-1606788074920-48a12f4fd4da?ixid=MXwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+            <p className="flex-grow">{index}</p>
+            <Img
+              className="w-full md:w-3/4 rounded"
+              fluid={indexPhoto.fluid}
               alt="Ethan Olsen"
             />
           </div>
@@ -296,8 +311,8 @@ const IndexPage = () => {
           </Link>
         </div>
         <div className="px-4 grid grid-rows-1 grid-cols-post-display-mobile md:grid-cols-post-display gap-8 md:overflow-x-auto overflow-x-scroll">
-          {test.map(t => (
-            <PostCard post={t} toPage="posts" />
+          {posts.map(p => (
+            <PostCard post={p} toPage="posts" />
           ))}
         </div>
       </div>
@@ -309,12 +324,12 @@ const IndexPage = () => {
           </Link>
         </div>
         <div className="px-4 grid grid-rows-1 grid-cols-post-display-mobile md:grid-cols-post-display gap-8 md:overflow-x-auto overflow-x-scroll">
-          {test.map(t => (
-            <PostCard post={t} toPage="posts" />
+          {projects.map(p => (
+            <PostCard post={p} toPage="projects" />
           ))}
         </div>
       </div>
-    </Layout>
+    </>
   )
 }
 
