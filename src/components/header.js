@@ -86,7 +86,7 @@ const Header = ({ siteTitle }) => {
         </div>
       </nav>
       {/* --- mobile --- */}
-      <nav className="shadow-md flex justify-between md:hidden z-20 fixed top-0 left-0 w-full h-15 bg-gray-200 dark:bg-gray-900 p-4">
+      <nav className="flex justify-between md:hidden z-20 fixed top-0 left-0 w-full h-15 bg-gray-200 dark:bg-gray-900 p-4">
         <button
           className="dark:hidden h-7 w-7 flex items-center justify-center"
           onClick={toggleDarkMode}
