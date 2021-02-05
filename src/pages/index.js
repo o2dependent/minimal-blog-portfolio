@@ -9,7 +9,7 @@ import NavProtector from "../components/navProtector"
 // --- query ---
 export const query = graphql`
   query IndexPage {
-    BlogPosts: allDatoCmsBlogPost(limit: 2) {
+    BlogPosts: allDatoCmsBlogPost(limit: 3) {
       edges {
         node {
           title
