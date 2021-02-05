@@ -133,21 +133,30 @@ const Header = ({ siteTitle }) => {
       <div
         className="flex fixed z-10 bg-gray-200 shadow-md dark:bg-gray-900 flex-col p-4 w-full gap-4 md:hidden overflow-hidden"
         style={{
-          top: isNavOpen ? "3.75rem" : "-100%",
+          top: isNavOpen ? "3.75rem" : "calc(-100% + 30rem)",
           transition: "top 750ms ease",
         }}
       >
-        <h2 className="flex align-center justify-center h-12 font-medium text-3xl border-b-2 border-gray-400">
+        <h2
+          onClick={() => setIsNavOpen(false)}
+          className="flex align-center justify-center h-12 font-medium text-3xl border-b-2 border-gray-400"
+        >
           <Link to="/" className="w-full h-full align-middle">
             Ethan Olsen
           </Link>
         </h2>
-        <h3 className="flex align-center justify-center h-12 font-medium text-3xl border-b-2 border-gray-400">
+        <h3
+          onClick={() => setIsNavOpen(false)}
+          className="flex align-center justify-center h-12 font-medium text-3xl border-b-2 border-gray-400"
+        >
           <Link to="/posts" className="w-full h-full align-middle">
             Posts
           </Link>
         </h3>
-        <h3 className="flex align-center justify-center h-12 font-medium text-3xl border-b-2 border-gray-400">
+        <h3
+          onClick={() => setIsNavOpen(false)}
+          className="flex align-center justify-center h-12 font-medium text-3xl border-b-2 border-gray-400"
+        >
           <Link to="/projects" className="w-full h-full align-middle">
             Projects
           </Link>
