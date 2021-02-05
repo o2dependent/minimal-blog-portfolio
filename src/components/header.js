@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react"
 import useSound from "use-sound"
 import darkPop from "../sounds/darkPop.wav"
 import lightPop from "../sounds/lightPop.wav"
+import NavProtector from "./navProtector"
 
 const Header = ({ siteTitle }) => {
   // --- hooks ---
@@ -37,7 +38,7 @@ const Header = ({ siteTitle }) => {
   }
 
   return (
-    <header className="w-full sticky z-20 top-0 h-15 bg-none md:bg-gray-200 md:dark:bg-gray-900">
+    <header className="w-full sticky z-20 top-0 h-15 bg-none">
       {/* --- desktop --- */}
       <nav className="hidden container h-full mx-auto md:flex justify-between px-4">
         <div className="flex h-full items-end gap-x-4">
@@ -86,7 +87,7 @@ const Header = ({ siteTitle }) => {
         </div>
       </nav>
       {/* --- mobile --- */}
-      <nav className="flex justify-between md:hidden z-20 fixed top-0 left-0 w-full h-15 bg-gray-200 dark:bg-gray-900 p-4">
+      <nav className="flex justify-between md:hidden z-20 fixed top-0 left-0 w-full h-15 p-4">
         <button
           className="dark:hidden h-7 w-7 flex items-center justify-center"
           onClick={toggleDarkMode}
@@ -131,12 +132,14 @@ const Header = ({ siteTitle }) => {
         </button>
       </nav>
       <div
-        className="flex fixed z-10 bg-gray-200 shadow-md top-15 dark:bg-gray-900 flex-col p-4 w-full gap-4 md:hidden overflow-hidden"
+        className="flex fixed z-10 bg-gray-200 shadow-md top-0 dark:bg-gray-900 flex-col p-4 w-full gap-4 md:hidden overflow-hidden"
         style={{
+          opacity: isNavOpen ? "1" : "0",
           transform: isNavOpen ? "translateY(0)" : "translateY(-100%)",
-          transition: "transform 750ms ease",
+          transition: "transform 750ms ease, opacity 750ms ease",
         }}
       >
+        <NavProtector type="main" />
         <h2
           onClick={() => setIsNavOpen(false)}
           className="flex align-center justify-center h-12 font-medium text-3xl border-b-2 border-gray-400"

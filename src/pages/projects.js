@@ -1,4 +1,5 @@
 import React from "react"
+import NavProtector from "../components/navProtector"
 import PostCard from "../components/PostCard"
 import SEO from "../components/seo"
 
@@ -23,11 +24,12 @@ export default function projects({ data }) {
   return (
     <>
       <SEO title="Projects" />
-      <div className="container w-full px-4 md:px-0 mx-auto py-20">
+      <NavProtector type="main" />
+      <div className="container w-full px-4 md:px-0 mx-auto py-5">
         <h1 className="mb-8">Projects</h1>
         <div className="grid gap-8 md:grid-cols-auto-post-display">
           {projects.map(p => (
-            <PostCard post={p} toPage="posts" />
+            <PostCard key={p.title} post={p} toPage="posts" />
           ))}
         </div>
       </div>
