@@ -1,9 +1,15 @@
-import React from "react"
+import React, { useState } from "react"
 import NavProtector from "../components/navProtector"
 
-export default function contact() {
+export default function Contact() {
+  // --- hooks ---
+  const [message, setMessage] = useState("")
+
   return (
     <div className="container mx-auto">
+      {message !== "" && (
+        <p className="rounded p-4 bg-red-500 dark:bg-blue-400">{message}</p>
+      )}
       <NavProtector type="main" />
       <h1 className="text-4xl text-center mb-4">Contact</h1>
       <p className="max-w-md mx-auto text-center mb-1 text-gray-500 dark:text-gray-400">
@@ -13,7 +19,12 @@ export default function contact() {
         How can I help you today?
       </p>
       <form
-        onSubmit={e => e.preventDefault()}
+        onSubmit={e => {
+          e.preventDefault()
+          setMessage(
+            "Thank you for the message I will be to you as soon as possible!"
+          )
+        }}
         className="mx-auto grid gap-4 p-4 md:p-8 grid-cols-1 md:grid-cols-2 place-content-center"
         name="contact"
         method="POST"
