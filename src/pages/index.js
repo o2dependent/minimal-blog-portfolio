@@ -57,7 +57,10 @@ const IndexPage = ({ data }) => {
         <div className="container md:mt-15 mt-10 mx-auto">
           {/* --- --- DARK MODE --- --- */}
           {/* --- desktop --- */}
-          <svg className="dark:hidden w-full h-auto" viewBox="0 0 185 16">
+          <svg
+            className="dark:hidden hidden md:block w-full h-auto"
+            viewBox="0 0 185 16"
+          >
             <defs>
               <linearGradient
                 id="rainbow"
@@ -88,20 +91,34 @@ const IndexPage = ({ data }) => {
             style={{ textAnchor: "middle" }}
             viewBox="0 0 65 60"
           >
-            <text fill="url(#rainbow)" x="50%" y="16">
+            <defs>
+              <linearGradient
+                id="rainbowMobile"
+                x1="0"
+                x2="100%"
+                y1="0"
+                y2="0"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop stopColor="#FDB32D" offset="0%" />
+                <stop stopColor="#FF845F" offset="50%" />
+                <stop stopColor="#FF5F8A" offset="100%" />
+              </linearGradient>
+            </defs>
+            <text fill="url(#rainbowMobile)" x="50%" y="16">
               LEARN
             </text>
-            <text fill="url(#rainbow)" x="50%" y="32">
+            <text fill="url(#rainbowMobile)" x="50%" y="32">
               CREATE
             </text>
-            <text fill="url(#rainbow)" x="50%" y="48">
+            <text fill="url(#rainbowMobile)" x="50%" y="48">
               ENJOY
             </text>
           </svg>
           {/* --- --- DARK MODE --- --- */}
           {/* --- desktop --- */}
           <svg
-            className="dark:block hidden w-full h-auto"
+            className="hidden md:dark:block w-full h-auto"
             style={{ textAnchor: "middle" }}
             viewBox="0 0 185 16"
           >
@@ -134,13 +151,27 @@ const IndexPage = ({ data }) => {
             style={{ textAnchor: "middle" }}
             viewBox="0 0 65 60"
           >
-            <text fill="url(#darkRainbow)" x="50%" y="16">
+            <defs>
+              <linearGradient
+                id="darkRainbowMobile"
+                x1="0"
+                x2="100%"
+                y1="0"
+                y2="0"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop stopColor="#00ECA1" offset="0%" />
+                <stop stopColor="#6F84F4" offset="50%" />
+                <stop stopColor="#F256CC" offset="100%" />
+              </linearGradient>
+            </defs>
+            <text fill="url(#darkRainbowMobile)" x="50%" y="16">
               LEARN
             </text>
-            <text fill="url(#darkRainbow)" x="50%" y="32">
+            <text fill="url(#darkRainbowMobile)" x="50%" y="32">
               CREATE
             </text>
-            <text fill="url(#darkRainbow)" x="50%" y="48">
+            <text fill="url(#darkRainbowMobile)" x="50%" y="48">
               ENJOY
             </text>
           </svg>

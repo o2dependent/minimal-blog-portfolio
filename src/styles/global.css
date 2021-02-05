@@ -150,3 +150,22 @@ body {
     left: calc(5rem + 100%);
   }
 }
+
+.content-styles h1 {
+  @apply text-4xl;
+}
+.content-styles h2 {
+  @apply text-3xl;
+}
+.content-styles h3 {
+  @apply text-2xl;
+}
+.content-styles h4 {
+  @apply text-xl;
+}
+.content-styles pre {
+  @apply text-xl;
+}
+.content-styles p {
+  @apply text-xl;
+}

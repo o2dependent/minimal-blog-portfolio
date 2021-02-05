@@ -29,7 +29,7 @@ export default function projects({ data }) {
         <h1 className="mb-8">Projects</h1>
         <div className="grid gap-8 md:grid-cols-auto-post-display">
           {projects.map(p => (
-            <PostCard key={p.title} post={p} toPage="posts" />
+            <PostCard key={p.title} post={p} toPage="projects" />
           ))}
         </div>
       </div>
