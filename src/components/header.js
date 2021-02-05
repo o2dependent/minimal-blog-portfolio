@@ -82,7 +82,7 @@ const Header = ({ siteTitle }) => {
             </svg>
           </button>
           <button className="max-h-10 h-full dark:text-gray-900 text-gray-200 font-medium rounded bg-red-500 dark:bg-blue-400 w-23">
-            <Link to="contact">contact</Link>
+            <Link to="/contact">contact</Link>
           </button>
         </div>
       </nav>

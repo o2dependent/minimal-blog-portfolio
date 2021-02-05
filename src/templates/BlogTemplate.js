@@ -21,7 +21,7 @@ export default function BlogTemplate({
   },
 }) {
   // MOCK TAGS FOR A POST
-  const tags = ["React"]
+  const tags = []
   return (
     <>
       <SEO title={title} description={preview} />

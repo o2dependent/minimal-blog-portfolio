@@ -1,4 +1,3 @@
-import { type } from "os"
 import React from "react"
 
 type I_Type = "main" | "accent"
