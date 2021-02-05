@@ -161,6 +161,14 @@ const Header = ({ siteTitle }) => {
             Projects
           </Link>
         </h3>
+        <h3
+          onClick={() => setIsNavOpen(false)}
+          className="flex align-center justify-center h-12 font-medium text-3xl border-b-2 border-gray-400"
+        >
+          <Link to="/contact" className="w-full h-full align-middle">
+            Contact
+          </Link>
+        </h3>
       </div>
     </header>
   )
