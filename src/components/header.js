@@ -131,10 +131,10 @@ const Header = ({ siteTitle }) => {
         </button>
       </nav>
       <div
-        className="flex fixed z-10 bg-gray-200 shadow-md dark:bg-gray-900 flex-col p-4 w-full gap-4 md:hidden overflow-hidden"
+        className="flex fixed z-10 bg-gray-200 shadow-md top-15 dark:bg-gray-900 flex-col p-4 w-full gap-4 md:hidden overflow-hidden"
         style={{
-          top: isNavOpen ? "3.75rem" : "calc(-100% + 30rem)",
-          transition: "top 750ms ease",
+          transform: isNavOpen ? "translateY(0)" : "translateY(-100%)",
+          transition: "transform 750ms ease",
         }}
       >
         <h2
