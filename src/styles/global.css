@@ -25,15 +25,14 @@
   background: hsl(218, 11%, 65%);
 }
 ::-webkit-scrollbar-track {
-  background: hsl(217, 11%, 25%);
+  background: transparent;
   border: none;
-  border-radius: 50px;
 }
 ::-webkit-scrollbar-track:hover {
-  background: hsl(217, 11%, 25%);
+  background: transparent;
 }
 ::-webkit-scrollbar-track:active {
-  background: hsl(219, 11%, 25%);
+  background: transparent;
 }
 ::-webkit-scrollbar-corner {
   background: transparent;
@@ -46,6 +45,7 @@
 html,
 body {
   min-height: 100vh;
+  @apply dark:bg-gray-200 bg-gray-900;
 }
 
 input,

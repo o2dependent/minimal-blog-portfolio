@@ -6,16 +6,16 @@ export default function Contact() {
   const [message, setMessage] = useState("")
 
   return (
-    <div className="container mx-auto">
+    <div className="container max-w-2xl mx-auto p-4 md:p-8 ">
       {message !== "" && (
         <p className="rounded p-4 bg-red-500 dark:bg-blue-400">{message}</p>
       )}
       <NavProtector type="main" />
       <h1 className="text-4xl text-center mb-4">Contact</h1>
-      <p className="max-w-md mx-auto text-center mb-1 text-gray-500 dark:text-gray-400">
+      <p className="mx-auto text-center mb-1 text-gray-500 dark:text-gray-400">
         Thanks for taking the time to reach out!
       </p>
-      <p className="max-w-md mx-auto text-center mb-1 text-gray-500 dark:text-gray-400">
+      <p className="mx-auto text-center mb-1 text-gray-500 dark:text-gray-400">
         How can I help you today?
       </p>
       <form
@@ -25,7 +25,7 @@ export default function Contact() {
             "Thank you for the message I will be to you as soon as possible!"
           )
         }}
-        className="mx-auto grid gap-4 p-4 md:p-8 grid-cols-1 md:grid-cols-2 place-content-center"
+        className="mx-auto grid gap-4 grid-cols-1 md:grid-cols-2 place-content-center"
         name="contact"
         method="POST"
         data-netlify="true"

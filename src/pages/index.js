@@ -347,7 +347,7 @@ const IndexPage = ({ data }) => {
             See more
           </Link>
         </div>
-        <div className="px-4 grid grid-rows-1 grid-cols-post-display-mobile md:grid-cols-post-display gap-8 md:overflow-x-auto overflow-x-scroll">
+        <div className="p-4 grid grid-rows-1 grid-cols-post-display-mobile md:grid-cols-post-display gap-8 md:overflow-x-auto overflow-x-scroll">
           {posts.map(p => (
             <PostCard key={p.title} post={p} toPage="posts" />
           ))}
@@ -360,7 +360,7 @@ const IndexPage = ({ data }) => {
             See more
           </Link>
         </div>
-        <div className="px-4 grid grid-rows-1 grid-cols-post-display-mobile md:grid-cols-post-display gap-8 md:overflow-x-auto overflow-x-scroll">
+        <div className="p-4 grid grid-rows-1 grid-cols-post-display-mobile md:grid-cols-post-display gap-8 md:overflow-x-auto overflow-x-scroll">
           {projects.map(p => (
             <PostCard key={p.title} post={p} toPage="projects" />
           ))}
