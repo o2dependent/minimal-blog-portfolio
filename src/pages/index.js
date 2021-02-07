@@ -331,11 +331,11 @@ const IndexPage = ({ data }) => {
           <h2 className=" text-4xl font-semibold">About me</h2>
           <div className="md:flex gap-8">
             <p className="flex-grow">{index}</p>
-            <Img
+            {/* <Img
               className="w-full md:w-3/4 rounded"
               fluid={indexPhoto.fluid}
               alt="Ethan Olsen"
-            />
+            /> */}
           </div>
         </div>
       </div>
