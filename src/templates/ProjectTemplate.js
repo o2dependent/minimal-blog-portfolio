@@ -12,27 +12,13 @@ export const query = graphql`
       link
       preview
       title
-      thumbnail {
-        fluid(
-          forceBlurhash: false
-          imgixParams: { fm: "jpg", auto: "compress" }
-        ) {
-          ...GatsbyDatoCmsFluid
-        }
-      }
     }
   }
 `
 
 export default function BlogTemplate({
   data: {
-    project: {
-      body,
-      title,
-      preview,
-      thumbnail: { fluid },
-      link,
-    },
+    project: { body, title, preview, link },
   },
 }) {
   // MOCK TAGS FOR A POST

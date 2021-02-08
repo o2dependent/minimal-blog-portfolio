@@ -38,8 +38,6 @@ const IndexPage = ({ data }) => {
   const posts = data.BlogPosts.edges.map(e => e.node)
   const projects = data.Projects.edges.map(e => e.node)
   const index = data.Index.introduction
-  const indexPhoto = data.Index.introPhoto
-  console.log({ posts, projects, index, indexPhoto })
 
   return (
     <>
