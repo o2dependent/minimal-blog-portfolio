@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import NavProtector from "../components/navProtector"
+import SEO from "../components/seo"
 
 export default function Contact() {
   // --- hooks ---
@@ -7,6 +8,7 @@ export default function Contact() {
 
   return (
     <div className="container max-w-2xl mx-auto p-4 md:p-8 ">
+      <SEO title='Contact' description='Send a message to Ethan Olsen.' />
       {message !== "" && (
         <p className="rounded p-4 bg-red-500 dark:bg-blue-400">{message}</p>
       )}

@@ -3,7 +3,6 @@ import React from "react"
 import SEO from "../components/seo"
 import PostCard from "../components/PostCard"
 import { Link } from "gatsby"
-import Img from "gatsby-image"
 import NavProtector from "../components/navProtector"
 
 // --- query ---
