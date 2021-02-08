@@ -329,7 +329,7 @@ const IndexPage = ({ data }) => {
         <div className="px-4 flex justify-between items-baseline">
           <h2 className="mb-9 text-4xl font-semibold">Posts</h2>
           <Link className="h-6 mb-9 text-lg" to="/posts">
-            See more
+            See all posts
           </Link>
         </div>
         <div className="p-4 grid grid-rows-1 grid-cols-post-display-mobile md:grid-cols-post-display gap-8 md:overflow-x-auto overflow-x-scroll">
@@ -342,7 +342,7 @@ const IndexPage = ({ data }) => {
         <div className="px-4 flex justify-between items-baseline">
           <h2 className="mb-9 text-4xl font-semibold">Projects</h2>
           <Link className="h-6 mb-9 text-lg" to="/projects">
-            See more
+            See all projects
           </Link>
         </div>
         <div className="p-4 grid grid-rows-1 grid-cols-post-display-mobile md:grid-cols-post-display gap-8 md:overflow-x-auto overflow-x-scroll">
