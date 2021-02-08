@@ -42,7 +42,9 @@ export default function BlogTemplate({
       <SEO title={title} description={preview} />
       <div className="container max-w-3xl mx-auto p-4 md:p-8">
         <NavProtector type="main" />
-        <h1 className="mb-4">{title}</h1>
+        <a className="underline" href={link}>
+          <h1 className="mb-4">{title}</h1>
+        </a>
         <div className="flex gap-4 mb-2 justify-start">
           <PostTags tags={tags} />
         </div>
