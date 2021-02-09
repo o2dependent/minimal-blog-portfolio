@@ -12,28 +12,34 @@ export const query = graphql`
       link
       preview
       title
+      tags
     }
   }
 `
 
 export default function BlogTemplate({
   data: {
-    project: { body, title, preview, link },
+    project: { body, title, preview, link, tags },
   },
 }) {
-  // MOCK TAGS FOR A POST
-  const tags = []
+  let parsedTags
+  if (tags !== null) {
+    parsedTags = JSON.parse(tags)
+  }
   return (
     <>
       <SEO title={title} description={preview} />
       <div className="container max-w-3xl mx-auto p-4 md:p-8">
         <NavProtector type="main" />
-        <a className="underline" href={link}>
-          <h1 className="mb-4">{title}</h1>
+        <a className="w-max" href={link}>
+          <h1 className="project-link mb-4 w-max">{title}</h1>
         </a>
-        <div className="flex gap-4 mb-2 justify-start">
-          <PostTags tags={tags} />
-        </div>
+        <sub className="opacity-70 text-base">by Ethan Olsen</sub>
+        {typeof parsedTags !== "undefined" && (
+          <div className="flex gap-4 mt-4 justify-start">
+            <PostTags tags={parsedTags} />
+          </div>
+        )}
       </div>
       <div className="bg-white dark:bg-gray-800 w-full">
         <NavProtector type="accent" />

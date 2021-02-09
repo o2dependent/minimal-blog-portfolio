@@ -48,7 +48,9 @@ export default function Contact() {
     <div className="container max-w-2xl mx-auto p-4 md:p-8 ">
       <SEO title="Contact" description="Send a message to Ethan Olsen." />
       {message !== "" && (
-        <p className="rounded p-4 bg-red-500 dark:bg-blue-400">{message}</p>
+        <p className="rounded p-4 bg-red-500 dark:bg-blue-400 font-medium dark:text-gray-900 text-gray-200">
+          {message}
+        </p>
       )}
       <NavProtector type="main" />
       <h1 className="text-4xl text-center mb-4">Contact</h1>
