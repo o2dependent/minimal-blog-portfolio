@@ -182,3 +182,21 @@ p {
 .content-styles pre {
   @apply text-base dark:bg-gray-900 rounded leading-4;
 }
+.content-styles a {
+  position: relative;
+}
+.content-styles a::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: currentColor;
+  opacity: 0.5;
+}
+.content-styles a:hover::before {
+  opacity: 0.75;
+}
+.content-styles img {
+  @apply rounded;
+}

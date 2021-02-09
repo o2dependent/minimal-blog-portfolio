@@ -2,13 +2,51 @@ import React, { useState } from "react"
 import NavProtector from "../components/navProtector"
 import SEO from "../components/seo"
 
+// --- encode for netlify form ---
+function encode(data) {
+  return Object.keys(data)
+    .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+    .join("&")
+}
+
 export default function Contact() {
   // --- hooks ---
   const [message, setMessage] = useState("")
+  const [formData, setFormData] = useState({ email: "", name: "", message: "" })
+
+  // --- handle functions ---
+  const handleChange = e => {
+    setFormData({ ...formData, [e.target.name]: e.target.value })
+  }
+
+  const handleSubmit = async e => {
+    e.preventDefault()
+    const form = e.target
+    if (formData.email === "" || formData.name === "") {
+      setMessage("Please fill out E-Mail and Name")
+    } else {
+      try {
+        await fetch("/", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: encode({
+            "form-name": form.getAttribute("name"),
+            ...formData,
+          }),
+        })
+        setFormData({ email: "", name: "", message: "" })
+        setMessage(
+          "Thank you for reaching out I will get back to you as soon as possible!"
+        )
+      } catch (err) {
+        console.error(err)
+      }
+    }
+  }
 
   return (
     <div className="container max-w-2xl mx-auto p-4 md:p-8 ">
-      <SEO title='Contact' description='Send a message to Ethan Olsen.' />
+      <SEO title="Contact" description="Send a message to Ethan Olsen." />
       {message !== "" && (
         <p className="rounded p-4 bg-red-500 dark:bg-blue-400">{message}</p>
       )}
@@ -21,12 +59,7 @@ export default function Contact() {
         How can I help you today?
       </p>
       <form
-        onSubmit={e => {
-          e.preventDefault()
-          setMessage(
-            "Thank you for the message I will be to you as soon as possible!"
-          )
-        }}
+        onSubmit={handleSubmit}
         className="mx-auto grid gap-4 grid-cols-1 md:grid-cols-2 place-content-center"
         name="contact"
         method="POST"
@@ -36,21 +69,35 @@ export default function Contact() {
           <label>
             Name
             <br />
-            <input className="w-full" type="text" name="name" />
+            <input
+              onChange={handleChange}
+              className="w-full"
+              type="text"
+              name="name"
+            />
           </label>
         </p>
         <p className="m-0">
           <label>
             Email
             <br />
-            <input className="w-full" type="email" name="email" />
+            <input
+              onChange={handleChange}
+              className="w-full"
+              type="email"
+              name="email"
+            />
           </label>
         </p>
         <p className="md:col-span-2 m-0">
           <label>
             Message
             <br />
-            <textarea className="w-full" name="message"></textarea>
+            <textarea
+              onChange={handleChange}
+              className="w-full"
+              name="message"
+            ></textarea>
           </label>
         </p>
         <p className="md:col-span-2">
