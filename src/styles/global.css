@@ -45,7 +45,14 @@
 html,
 body {
   min-height: 100vh;
-  @apply dark:bg-gray-200 bg-gray-900;
+}
+
+body {
+  @apply bg-gray-200;
+}
+
+body.dark {
+  @apply bg-gray-900;
 }
 
 input,

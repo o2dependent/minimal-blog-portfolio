@@ -6,7 +6,7 @@ import SEO from "../components/seo"
 // --- data ---
 export const query = graphql`
   query BlogPostPreview {
-    BlogPosts: allDatoCmsBlogPost {
+    BlogPosts: allDatoCmsBlogPost(sort: { fields: date, order: DESC }) {
       edges {
         node {
           preview
