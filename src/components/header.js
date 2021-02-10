@@ -94,6 +94,8 @@ const Header = ({ siteTitle }) => {
         <button
           className="dark:hidden h-7 w-7 flex items-center justify-center"
           onClick={toggleDarkMode}
+          title="Enable dark mode"
+          aria-label="Enable dark mode"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -108,6 +110,8 @@ const Header = ({ siteTitle }) => {
         <button
           className="dark:flex h-7 w-7 hidden items-center justify-center"
           onClick={toggleDarkMode}
+          title="Enable light mode"
+          aria-label="Enable light mode"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -122,6 +126,7 @@ const Header = ({ siteTitle }) => {
         <button
           onClick={() => setIsNavOpen(!isNavOpen)}
           className="h-7 w-7 focus:outline-none"
+          aria-label="Open menu"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
