@@ -56,6 +56,8 @@ const Header = ({ siteTitle }) => {
           <button
             className="dark:hidden flex items-center justify-center"
             onClick={toggleDarkMode}
+            title="Enable dark mode"
+            aria-label="Enable dark mode"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -70,6 +72,8 @@ const Header = ({ siteTitle }) => {
           <button
             className="dark:flex hidden items-center justify-center"
             onClick={toggleDarkMode}
+            title="Enable light mode"
+            aria-label="Enable light mode"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
