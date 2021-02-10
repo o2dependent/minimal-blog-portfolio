@@ -41,7 +41,7 @@ export default function BlogTemplate({
           </div>
         )}
       </div>
-      <div className="bg-white dark:bg-gray-800 w-full">
+      <div className="bg-white dark:bg-gray-800 w-full flex-grow">
         <NavProtector type="accent" />
         <div
           className="content-styles container max-w-3xl mx-auto p-4 md:p-8"

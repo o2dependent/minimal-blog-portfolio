@@ -19,7 +19,7 @@ const Layout = ({ children }) => {
   return (
     <div className="min-h-screen dark:text-white bg-gray-200 dark:bg-gray-900 flex flex-col">
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
-      <main className="flex-grow">{children}</main>
+      <main className="flex-grow flex flex-col">{children}</main>
       <footer className="bg-white dark:bg-gray-800 h-28 py-4">
         <div className="h-full container flex flex-col gap-4 mx-auto ">
           <div className="grid grid-cols-3 gap-10 w-max mx-auto">
