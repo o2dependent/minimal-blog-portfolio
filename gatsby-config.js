@@ -21,8 +21,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Ethan Olsen Dev`,
+        short_name: `EO Dev`,
         start_url: `/`,
         background_color: `#101319`,
         theme_color: `#101319`,
