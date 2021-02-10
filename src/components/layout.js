@@ -28,6 +28,7 @@ const Layout = ({ children }) => {
                 href="https://github.com/o2dependent"
                 target="_blank"
                 rel="noreferrer"
+                title="Github"
               >
                 <svg
                   className="text-gray-400 fill-current m-0 w-full h-full "
@@ -41,7 +42,12 @@ const Layout = ({ children }) => {
               </a>
             </div>
             <div className="w-12 h-12">
-              <a href="ethan@eolsen.dev" target="_blank" rel="noreferrer">
+              <a
+                href="ethan@eolsen.dev"
+                target="_blank"
+                rel="noreferrer"
+                title="E-Mail"
+              >
                 <svg
                   className="text-gray-400 fill-current m-0 w-full h-full "
                   xmlns="http://www.w3.org/2000/svg"
@@ -58,6 +64,7 @@ const Layout = ({ children }) => {
                 href="https://www.linkedin.com/in/eolsendev"
                 target="_blank"
                 rel="noreferrer"
+                title="Linkedin"
               >
                 <svg
                   className="text-gray-400 fill-current m-0 w-full h-full "
