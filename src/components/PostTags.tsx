@@ -17,10 +17,10 @@ export default function PostTags({
   activeTags,
 }: I_PostTagsProps) {
   const baseClass =
-    "flex items-center justify-center cursor-default text-sm opacity-70 hover:opacity-100 px-4 py-2 bg-white dark:bg-gray-800 rounded-full"
+    "flex items-center justify-center cursor-pointer text-sm opacity-70 hover:opacity-100 px-4 py-2 bg-white dark:bg-gray-800 rounded-full"
   if (toggle && activeTags) {
     return (
-      <div className="flex gap-4 my-4 justify-start">
+      <div className="flex flex-wrap gap-4 my-4 justify-start">
         {tags.map<JSX.Element>(tag => (
           <div
             className={`${baseClass} ${
@@ -36,7 +36,7 @@ export default function PostTags({
     )
   } else if (to) {
     return (
-      <div className="flex gap-4 my-4 justify-start">
+      <div className="flex flex-wrap gap-4 my-4 justify-start">
         {tags.map<JSX.Element>(tag => (
           <Link to={`/${to}?tags=${tag}`} className={baseClass} key={tag}>
             #{tag}
