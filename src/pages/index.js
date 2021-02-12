@@ -9,38 +9,53 @@ import SvgSwitch from "../components/SvgSwitch"
 // --- query ---
 export const query = graphql`
   query IndexPage {
-    BlogPosts: allDatoCmsBlogPost(
+    BlogPosts: allMdx(
+      filter: { fileAbsolutePath: { regex: "/pages/posts/" } }
+      sort: { fields: frontmatter___date, order: DESC }
       limit: 3
-      sort: { fields: date, order: DESC }
     ) {
       edges {
         node {
-          title
-          preview
+          frontmatter {
+            title
+            preview
+          }
           slug
         }
       }
     }
-    Projects: allDatoCmsProjectPost(limit: 3) {
+    Projects: allMdx(
+      filter: { fileAbsolutePath: { regex: "/pages/projects/" } }
+      sort: { fields: frontmatter___date, order: DESC }
+      limit: 3
+    ) {
       edges {
         node {
-          title
-          preview
+          frontmatter {
+            title
+            preview
+            date
+          }
           slug
         }
       }
-    }
-    Index: datoCmsIndex {
-      introduction
     }
   }
 `
 
 const IndexPage = ({ data }) => {
+  // --- functions ---
+  const getCardData = e => {
+    const node = e.node
+    const { frontmatter, slug } = node
+    const { preview, title } = frontmatter
+    return { frontmatter, slug, preview, title }
+  }
   // --- variables ---
-  const posts = data.BlogPosts.edges.map(e => e.node)
-  const projects = data.Projects.edges.map(e => e.node)
-  const index = data.Index.introduction
+  const posts = data.BlogPosts.edges.map(getCardData)
+  const projects = data.Projects.edges.map(getCardData)
+  const index =
+    "I am a web developer and designer with a focus on front-end animation and application development. This site is primarily a way to show what I have been working on and the benefits and struggles of the tech I have been using. If you enjoy any of the articles feel free to send me a message and start a discussion about the topic!"
 
   return (
     <>

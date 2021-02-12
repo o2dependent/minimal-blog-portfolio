@@ -6,7 +6,7 @@ import darkPop from "../sounds/darkPop.wav"
 import lightPop from "../sounds/lightPop.wav"
 import NavProtector from "./navProtector"
 
-const Header = ({ siteTitle }) => {
+const Header = () => {
   // --- hooks ---
   // useSound
   const [playDark] = useSound(darkPop, { volume: 0.25 })

@@ -1,16 +1,21 @@
 import React from "react"
-import NavProtector from "../components/navProtector"
-import PostCard from "../components/PostCard"
-import SEO from "../components/seo"
+import NavProtector from "../../components/navProtector"
+import PostCard from "../../components/PostCard"
+import SEO from "../../components/seo"
 
 // --- data ---
 export const query = graphql`
   query BlogPostPreview {
-    BlogPosts: allDatoCmsBlogPost(sort: { fields: date, order: DESC }) {
+    BlogPosts: allMdx(
+      filter: { fileAbsolutePath: { regex: "/pages/posts/" } }
+      sort: { fields: frontmatter___date, order: DESC }
+    ) {
       edges {
         node {
-          preview
-          title
+          frontmatter {
+            title
+            preview
+          }
           slug
         }
       }
@@ -20,7 +25,12 @@ export const query = graphql`
 
 export default function posts({ data }) {
   // --- variables ---
-  const posts = data.BlogPosts.edges.map(e => e.node)
+  const posts = data.BlogPosts.edges.map(e => {
+    const node = e.node
+    const { frontmatter, slug } = node
+    const { preview, title } = frontmatter
+    return { frontmatter, slug, preview, title }
+  })
 
   return (
     <>

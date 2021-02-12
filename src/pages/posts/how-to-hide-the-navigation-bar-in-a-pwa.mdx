@@ -1,0 +1,32 @@
+---
+title: How to hide the navigation bar in a PWA
+tags:
+date: 2021-02-01
+preview: When making a PWA you want to be sure that your user experience doesn't suffer because of that pesky nav bar. This is how take control of your PWA!
+---
+
+PWAs are becoming a more popular way of creating quick and multiplatform applications. If you are making a PWA and can't seem to get the top bar out of your way you just need to change a single word. Display is a property that is in your manifest file and takes a range of options that can greatly affect the flow of your app.
+
+## Display properties
+
+The display property is what controls the view of your PWA. It can make your application fullscreen or fill the full viewport with your window. The latter is used most to emulate the feel of a native app. Below I have a quick breakdown of each property and if I missed something feel free to let me know.
+
+## Minimal-UI
+
+Minimal UI is the default display value in the offline plugin that comes with Gatsby and leads to a less than ideal PWA. This property will keep the top navigation bar and limits the UX of your app by cropping the screen with an address bar.
+
+## Standalone
+
+This is what most PWAs will use to get as close to the native experience as possible. Standalone doesn't fully cover the user's screen and just fills the viewport that would be available to other types of applications.
+
+## Fullscreen
+
+Fullscreen will cover your user's entire screen. On Android, this includes the status bar. You will want to be sure you won't limit UX by locking your user into your app. If you are making a to-do list there is no reason to take up the entirety of your user's screen and will likely lead to more frustration.
+
+## Browser
+
+This is likely the option you will never pick. When opening your app it will launch straight into a browser with no UI limiting. This can be good but most of the time it will be more a hindrance than a benefit.
+
+## Conclusion
+
+Making sure that your PWA is functioning and feeling the way it should be difficult but changing a single property can really make a difference. I hope you found this quickie useful if you have anything to add feel free to send me a message.

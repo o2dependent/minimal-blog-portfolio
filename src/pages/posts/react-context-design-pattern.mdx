@@ -1,0 +1,67 @@
+---
+title: React Context design pattern
+tags:
+  - React
+  - CSS
+date: 2021-01-21
+preview: React Context is an API that can lead to a much better developer experience. I will go over a couple ways that Context helped me out.
+---
+
+## How can I utilize Context in my app?
+
+I will cover a couple of patterns that I found to be helpful when first learning Context. It can be tricky to pin when you will need it but, after you implement a context that works in your application flow you will see why context is great.
+
+## Database and Authentication
+
+When you are making an application you will likely be using a database and authenticating users. In the past, I have gone through the slog of making separate folders and files for everything I need, but now I move towards Context. This allows you to write functions with easy to understand names and pull them into any part of your app. Here is an example of a simple login and sign up Context with Firebase.
+
+```js
+import React, { useContext, useEffect, useState } from "react"
+import { auth } from "../helpers/firebase"
+
+const AuthContext = React.createContext()
+
+export function useAuth() {
+  return useContext(AuthContext)
+}
+
+export function AuthProvider({ children }) {
+  const [currentUser, setCurrentUser] = useState()
+  const [loading, setLoading] = useState(true)
+
+  function signup(email, password) {
+    return auth.createUserWithEmailAndPassword(email, password)
+  }
+
+  function login(email, password) {
+    return auth.signInWithEmailAndPassword(email, password)
+  }
+
+  function logout() {
+    return auth.signOut()
+  }
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged(user => {
+      setCurrentUser(user)
+      setLoading(false)
+    })
+    return unsubscribe
+  }, [])
+
+  const value = {
+    currentUser,
+    signup,
+    login,
+    logout,
+  }
+
+  return (
+    <AuthContext.Provider value={value}>
+      {!loading ? children : null}
+    </AuthContext.Provider>
+  )
+}
+```
+
+This component wraps the root of the application and apply to all pages and components. This allows you to import the useAuth hook and return any values stored in Context. On a login page, you can import login and simply call login(email, password) and log a user in.

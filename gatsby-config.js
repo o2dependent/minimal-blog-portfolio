@@ -16,6 +16,43 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `posts`,
+        path: `${__dirname}/src/pages/posts`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `projects`,
+        path: `${__dirname}/src/pages/projects`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        extensions: [`.mdx`],
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-vscode`,
+            options: {
+              theme: "Dark+ (default dark)", // Or install your favorite theme from GitHub
+            },
+          },
+        ],
+        defaultLayouts: {
+          projects: require.resolve(
+            "./src/components/mdxLayouts/ProjectsLayout.js"
+          ),
+          posts: require.resolve("./src/components/mdxLayouts/PostsLayout.js"),
+          default: require.resolve(
+            "./src/components/mdxLayouts/DefaultLayout.js"
+          ),
+        },
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
@@ -31,23 +68,11 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-datocms`,
-      options: {
-        apiToken: process.env.DATO_API_KEY,
-      },
-    },
-    {
       resolve: `gatsby-plugin-google-gtag`,
       options: {
-        // You can add multiple tracking ids and a pageview event will be fired for all of them.
-        trackingIds: [
-          "G-KC0ZV002BG", // Google Analytics / GA
-        ],
-        // This object is used for configuration specific to this plugin
+        trackingIds: ["G-KC0ZV002BG"],
         pluginConfig: {
-          // Puts tracking script in the head instead of the body
           head: true,
-          // Setting this parameter is also optional
           respectDNT: true,
         },
       },

@@ -1,0 +1,47 @@
+---
+title: Tailwind CSS for fast development ( & dark mode )
+tags:
+  - CSS
+date: 2021-02-05
+preview: Tailwind CSS has been a fantastic tool in developing fast and aestetically appealing sites with site wide dark mode.
+---
+
+## What is Tailwind CSS?
+
+Tailwind is a CSS library that adds utility classes similar to bootstrap. The difference primarily comes at build time where tailwind won't ship all of the classes in its library, but only those that are needed for your project. All of the classes are essentially shorthand for CSS properties. If I wanted a margin-bottom of 1rem I could write out the whole line in my CSS class or I can add "mb-4" with Tailwind. This makes development a lot easier to keep consistent spacing, font sizes, and container widths.
+
+## Why not just plain CSS?
+
+This is totally up to you. If you already have a fast workflow with plain CSS try out Tailwinds for a project and see if it works with your development style. I enjoy coding out my project one component at a time and focusing on several windows to manage what needs what and where can get very disorienting for me.
+
+## What about Dark Mode?
+
+One of the huge upsides to Tailwinds for me personally is the addition of dark mode classes. For a while now I have wanted to set up my own dark mode flow but everytime I start I get discouraged by just how many ways you can go about it and the problems that come with implementing this feature yourself. Tailwinds has fantastic support for this and makes adding dark mode to any site a breeze. I have added a quick snippet that I use to toggle dark mode on my site.
+
+```js
+// --- hooks ---
+// check for dark mode
+useEffect(() => {
+  if (
+    localStorage.getItem("dark") === "dark" ||
+    (localStorage.getItem("dark") !== "light" &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches)
+  ) {
+    document.body.classList.add("dark")
+  }
+}, [])
+// --- functions ---
+const toggleDarkMode = () => {
+  const isBodyDark = document.body.classList.contains("dark")
+  document.body.classList.toggle("dark")
+  if (isBodyDark) {
+    localStorage.setItem("dark", "light")
+  } else {
+    localStorage.setItem("dark", "dark")
+  }
+}
+```
+
+The useEffect hook is to check if the user already has a preference either by previously visiting or having prefers-color-scheme set to dark on their device.
+
+I hope you got something from this quick post and if you have anything to add feel free to send me a message with your best Tailwind CSS tips!

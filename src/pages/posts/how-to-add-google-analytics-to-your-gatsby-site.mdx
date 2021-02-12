@@ -1,0 +1,44 @@
+---
+title: How to add Google Analytics to your Gatsby site
+tags:
+  - React
+  - Gatsby
+date: 2021-02-08
+preview: Analytics are a crucial part of any website and in this tutorial you will learn how to add Google Analytics to your Gatsby site.
+---
+
+## Setting up google analytics
+
+You will need a few things to start adding analytics to your Gatsby site. The first requirement is having a Google Analytics account. If you don't already have an account you can sign up at analytics.google.com. Once you have your account set up you will want to go to your site's stream and uncheck the "Page views" advanced option called "Page changes based on browser history events". Due to Gatsby producing single-page applications and managing the current view based on browser history events this can lead to inaccurate analytics and double requests.
+
+While you are here you will also want to find your measurement ID. Keep this in your clipboard to paste into your Gatsby config later.
+
+## Setting up Gatsby
+
+Once you have your analytics account set up and your Gatsby project open you will want to head over to Gatsby's gtag plugin page. Here you will want to copy paste the npm install snippet and install the plugin as a dependency. Now head over to your gatsby.config file and past in the provided config object from the plugin page. If you are implementing any other tracking such as Ad Word you can add that tracking ID here as well, but for basic sites without ads, your config should look something like this.
+
+```js
+modules.exports = {
+  plugins: [
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: ['ga-measurement-id']
+        pluginConfig: {
+          head: true,
+          respectDNT: true,
+        }
+      }
+    }
+}
+```
+
+Tada, you now have google analytics added to your site!
+
+## Making sure it works
+
+The plugin will only add the tracking snippet to your site after the site is built so to test if your plugin is working properly build and serve your site with "gatsby build" and "gatsby serve". Once you are serving your site visit your locally served site then check your analytics dashboard to be sure that you are getting information sent out.
+
+## Conclusion
+
+I hope that this helped you make your site better. If this helped you feel free to send me a message with a topic you would like me to cover. I hope you have a great day and I'll see you in the next post.
