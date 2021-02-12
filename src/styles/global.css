@@ -200,7 +200,7 @@ p {
   @apply text-xl;
 }
 .content-styles pre {
-  @apply text-base dark:bg-gray-900 rounded leading-4;
+  @apply rounded;
 }
 .content-styles a {
   position: relative;

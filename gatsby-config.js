@@ -38,7 +38,13 @@ module.exports = {
           {
             resolve: `gatsby-remark-vscode`,
             options: {
-              theme: "Dark+ (default dark)", // Or install your favorite theme from GitHub
+              theme: {
+                default: "Monokai",
+                parentSelector: {
+                  // Any CSS selector will work!
+                  "body[class=dark]": "Monokai Dimmed",
+                },
+              },
             },
           },
         ],
