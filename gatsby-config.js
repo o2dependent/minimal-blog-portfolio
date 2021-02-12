@@ -39,7 +39,7 @@ module.exports = {
             resolve: `gatsby-remark-vscode`,
             options: {
               theme: {
-                default: "Monokai",
+                default: "Quiet Light",
                 parentSelector: {
                   // Any CSS selector will work!
                   "body[class=dark]": "Monokai Dimmed",
