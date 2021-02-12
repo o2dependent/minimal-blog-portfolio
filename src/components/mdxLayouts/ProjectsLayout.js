@@ -18,11 +18,7 @@ export default function PostsLayout({ children, pathContext }) {
           <sub className="opacity-70 text-base">by Ethan Olsen</sub>
           <sub className="opacity-70 text-base">{newDate}</sub>
         </div>
-        {typeof tags !== "undefined" && (
-          <div className="flex gap-4 mt-4 justify-start">
-            <PostTags tags={tags} />
-          </div>
-        )}
+        {tags && <PostTags to="projects" tags={tags} />}
       </div>
       <div className="bg-white dark:bg-gray-800 w-full flex-grow">
         <NavProtector type="accent" />
