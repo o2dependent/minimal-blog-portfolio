@@ -24,7 +24,7 @@ export default function PostTags({
         {tags.map<JSX.Element>(tag => (
           <div
             className={`${baseClass} ${
-              activeTags.includes(tag) ? "opacity-100" : ""
+              activeTags.includes(tag) ? "ring-gray-400 ring-1 opacity-100" : ""
             }`}
             onClick={() => toggle(tag)}
             key={tag}
