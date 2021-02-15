@@ -2,7 +2,7 @@ import React from "react"
 
 import SEO from "../components/seo"
 import PostCard from "../components/PostCard"
-import { Link } from "gatsby"
+import { graphql, Link } from "gatsby"
 import NavProtector from "../components/navProtector"
 import SvgSwitch from "../components/SvgSwitch"
 

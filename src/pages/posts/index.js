@@ -1,3 +1,4 @@
+import { graphql } from "gatsby"
 import React, { useEffect, useState } from "react"
 import { ArrayParam, useQueryParams } from "use-query-params"
 import NavProtector from "../../components/navProtector"
