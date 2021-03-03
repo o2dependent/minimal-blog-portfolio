@@ -1,10 +1,12 @@
 import { graphql } from "gatsby"
 import React, { useEffect, useState } from "react"
+import styled from "styled-components"
 import { ArrayParam, useQueryParams } from "use-query-params"
 import NavProtector from "../../components/navProtector"
 import PostCard from "../../components/PostCard"
 import PostTags from "../../components/PostTags"
 import SEO from "../../components/seo"
+import mixins from "../../helpers/mixins"
 
 // --- data ---
 export const query = graphql`
@@ -81,7 +83,7 @@ export default function Posts({ data, params }) {
     <>
       <SEO title="Blog Posts" />
       <NavProtector type="main" onClick={handleTagToggle} />
-      <div className="container w-full px-4 md:px-0 mx-auto pb-15">
+      <Container>
         <h1 className="mb-4">Posts</h1>
         <PostTags
           toggle={handleTagToggle}
@@ -93,7 +95,23 @@ export default function Posts({ data, params }) {
             <PostCard key={p.title} post={p} toPage="posts" />
           ))}
         </div>
-      </div>
+      </Container>
     </>
   )
 }
+
+// --- styled components ---
+const Container = styled.div`
+  ${mixins.container}
+  padding: 0 1rem;
+  padding-bottom: 3.75rem;
+  margin: 0 auto;
+  @media (min-width: 768px) {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+`
+
+const Title = styled.h1``
+
+const PostGrid = styled.div``
