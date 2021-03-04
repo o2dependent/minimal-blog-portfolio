@@ -1,10 +1,10 @@
 import React, { useEffect } from "react"
 import styled from "styled-components"
 import useSound from "use-sound"
-import darkPop from "../sounds/darkPop.wav"
-import lightPop from "../sounds/lightPop.wav"
-import DesktopNav from "./header/DesktopNav"
-import MobileNav from "./header/MobileNav"
+import darkPop from "../../sounds/darkPop.wav"
+import lightPop from "../../sounds/lightPop.wav"
+import DesktopNav from "./DesktopNav"
+import MobileNav from "./MobileNav"
 
 const Header = () => {
   // --- hooks ---

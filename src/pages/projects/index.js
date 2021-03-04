@@ -5,6 +5,7 @@ import NavProtector from "../../components/navProtector"
 import PostCard from "../../components/PostCard"
 import PostTags from "../../components/PostTags"
 import SEO from "../../components/seo"
+import { Container, PostGrid, Title } from "../posts"
 
 // --- query ---
 export const query = graphql`
@@ -80,19 +81,19 @@ export default function Projects({ data }) {
     <>
       <SEO title="Projects" />
       <NavProtector type="main" />
-      <div className="container w-full px-4 md:px-0 mx-auto pb-15">
-        <h1 className="mb-4">Projects</h1>
+      <Container>
+        <Title>Projects</Title>
         <PostTags
           toggle={handleTagToggle}
           activeTags={activeTags}
           tags={["React", "CSS", "Gatsby", "Nextjs", "Node", "Git"]}
         />
-        <div className="grid gap-8 md:grid-cols-auto-post-display">
+        <PostGrid>
           {projects.map(p => (
             <PostCard key={p.title} post={p} toPage="projects" />
           ))}
-        </div>
-      </div>
+        </PostGrid>
+      </Container>
     </>
   )
 }

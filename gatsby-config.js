@@ -91,7 +91,6 @@ module.exports = {
       },
     },
     `gatsby-plugin-preact`,
-    `gatsby-plugin-postcss`,
     `gatsby-plugin-netlify`,
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-offline`,

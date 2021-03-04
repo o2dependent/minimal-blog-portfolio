@@ -59,26 +59,18 @@ export default function MobileNav({ toggleDarkMode }) {
       </Nav>
       <LinkContainer isNavOpen={isNavOpen}>
         <NavProtector type="main" />
-        <NavLink>
-          <Link to="/" className="w-full h-full align-middle">
-            Ethan Olsen
-          </Link>
-        </NavLink>
-        <NavLink>
-          <Link to="/posts" className="w-full h-full align-middle">
-            Posts
-          </Link>
-        </NavLink>
-        <NavLink>
-          <Link to="/projects" className="w-full h-full align-middle">
-            Projects
-          </Link>
-        </NavLink>
-        <NavLink>
-          <Link to="/contact" className="w-full h-full align-middle">
-            Contact
-          </Link>
-        </NavLink>
+        <NavLinkContainer>
+          <NavLink to="/">Ethan Olsen</NavLink>
+        </NavLinkContainer>
+        <NavLinkContainer>
+          <NavLink to="/posts">Posts</NavLink>
+        </NavLinkContainer>
+        <NavLinkContainer>
+          <NavLink to="/projects">Projects</NavLink>
+        </NavLinkContainer>
+        <NavLinkContainer>
+          <NavLink to="/contact">Contact</NavLink>
+        </NavLinkContainer>
       </LinkContainer>
     </>
   )
@@ -128,7 +120,7 @@ const LinkContainer = styled.div<{ isNavOpen: boolean }>`
   }
 `
 
-const NavLink = styled.h3`
+const NavLinkContainer = styled.h3`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -138,6 +130,12 @@ const NavLink = styled.h3`
   border-color: ${colors.gray[400]};
   font-size: 1.875rem;
   line-height: 2.25rem;
+`
+
+const NavLink = styled(Link)`
+  width: 100%;
+  height: 100%;
+  vertical-align: middle;
 `
 
 const MenuButton = styled.button`

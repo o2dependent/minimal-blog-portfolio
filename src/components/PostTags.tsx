@@ -70,11 +70,6 @@ const Tag = styled.button<{ active: boolean }>`
   border-radius: 9999px;
   box-shadow: ${p => (p.active ? `0px 0px 0px 1px ${colors.gray[400]}` : "")};
 
-  &:focus {
-    outline: none;
-    box-shadow: 0px 0px 5px 3px #00000040;
-  }
-
   .dark & {
     background-color: ${colors.gray[800]};
   }

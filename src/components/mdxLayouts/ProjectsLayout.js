@@ -1,7 +1,16 @@
 import React from "react"
+import styled from "styled-components"
 import NavProtector from "../../components/navProtector"
 import PostTags from "../../components/PostTags"
 import SEO from "../../components/seo"
+import {
+  Article,
+  ArticleContainer,
+  Sub,
+  SubContainer,
+  TextLayoutContainer,
+  Title,
+} from "./PostsLayout"
 
 export default function PostsLayout({ children, pathContext }) {
   const { date, preview, tags, title, link } = pathContext.frontmatter
@@ -9,24 +18,52 @@ export default function PostsLayout({ children, pathContext }) {
   return (
     <>
       <SEO title={title} description={preview} />
-      <div className="container max-w-3xl mx-auto px-4 md:px-8 pb-4 md:pb-8">
+      <TextLayoutContainer>
         <NavProtector type="main" />
-        <a className="w-max" href={link}>
-          <h1 className="project-link mb-4 w-max">{title}</h1>
-        </a>
-        <div className="flex justify-between">
-          <sub className="opacity-70 text-base">by Ethan Olsen</sub>
-          <sub className="opacity-70 text-base">{newDate}</sub>
-        </div>
+        <ProjectLink href={link}>
+          <ProjectTitle>{title}</ProjectTitle>
+        </ProjectLink>
+        <SubContainer>
+          <Sub>by Ethan Olsen</Sub>
+          <Sub>{newDate}</Sub>
+        </SubContainer>
         {tags && <PostTags to="projects" tags={tags} />}
-      </div>
-      <div className="bg-white dark:bg-gray-800 w-full flex-grow">
+      </TextLayoutContainer>
+      <ArticleContainer>
         <NavProtector type="accent" />
-        <article className="content-styles container max-w-3xl mx-auto p-4 md:p-8">
+        <Article>
           <p>{preview}</p>
           {children}
-        </article>
-      </div>
+        </Article>
+      </ArticleContainer>
     </>
   )
 }
+
+// --- styled components ---
+const ProjectTitle = styled.h1`
+  position: relative;
+  width: max-content;
+
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: currentColor;
+    opacity: 0.5;
+    transform-origin: top;
+    transition: height 250ms ease, opacity 250ms ease, bottom 250ms ease;
+  }
+
+  &:hover::before {
+    opacity: 0.75;
+    height: 5px;
+    bottom: -3px;
+  }
+`
+
+const ProjectLink = styled.a`
+  width: max-content;
+`
