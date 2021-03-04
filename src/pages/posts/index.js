@@ -1,10 +1,12 @@
 import { graphql } from "gatsby"
 import React, { useEffect, useState } from "react"
+import styled from "styled-components"
 import { ArrayParam, useQueryParams } from "use-query-params"
 import NavProtector from "../../components/navProtector"
 import PostCard from "../../components/PostCard"
 import PostTags from "../../components/PostTags"
 import SEO from "../../components/seo"
+import mixins from "../../helpers/mixins"
 
 // --- data ---
 export const query = graphql`
@@ -81,19 +83,43 @@ export default function Posts({ data, params }) {
     <>
       <SEO title="Blog Posts" />
       <NavProtector type="main" onClick={handleTagToggle} />
-      <div className="container w-full px-4 md:px-0 mx-auto pb-15">
-        <h1 className="mb-4">Posts</h1>
+      <Container>
+        <Title>Posts</Title>
         <PostTags
           toggle={handleTagToggle}
           activeTags={activeTags}
           tags={["React", "CSS", "Gatsby", "Nextjs", "Node", "Git"]}
         />
-        <div className="grid gap-8 md:grid-cols-auto-post-display">
+        <PostGrid>
           {posts.map(p => (
             <PostCard key={p.title} post={p} toPage="posts" />
           ))}
-        </div>
-      </div>
+        </PostGrid>
+      </Container>
     </>
   )
 }
+
+// --- styled components ---
+export const Container = styled.div`
+  ${mixins.container}
+  padding: 0 1rem;
+  padding-bottom: 3.75rem;
+  margin: 0 auto;
+  @media (min-width: 768px) {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+`
+
+export const Title = styled.h1`
+  margin-bottom: 1rem;
+`
+
+export const PostGrid = styled.div`
+  display: grid;
+  gap: 2rem;
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(auto-fill, minmax(475px, 1fr));
+  }
+`

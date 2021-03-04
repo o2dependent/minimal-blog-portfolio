@@ -1,4 +1,6 @@
 import React from "react"
+import styled from "styled-components"
+import colors from "../helpers/colors"
 
 type I_Type = "main" | "accent"
 
@@ -9,15 +11,36 @@ export default function NavProtector({ type }: I_NavProtectorProps) {
   const typeSwitch = () => {
     switch (type) {
       case "main":
-        return (
-          <div className="bg-gray-200 dark:bg-gray-900  w-full sticky -top-px	 h-15 z-10"></div>
-        )
+        return <MainProtector />
       case "accent":
-        return (
-          <div className="bg-white dark:bg-gray-800 w-full sticky -top-px h-15 z-10"></div>
-        )
+        return <AccentProtector />
     }
   }
 
   return <>{typeSwitch()}</>
 }
+
+// --- styled components ---
+const Protector = styled.div`
+  width: 100%;
+  position: sticky;
+  top: -1px;
+  height: 3.75rem;
+  z-index: 10;
+`
+
+const MainProtector = styled(Protector)`
+  background-color: ${colors.gray[200]};
+
+  .dark & {
+    background-color: ${colors.gray[900]};
+  }
+`
+
+const AccentProtector = styled(Protector)`
+  background-color: ${colors.white};
+
+  .dark & {
+    background-color: ${colors.gray[800]};
+  }
+`

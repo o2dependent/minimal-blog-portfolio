@@ -5,6 +5,11 @@ import PostCard from "../components/PostCard"
 import { graphql, Link } from "gatsby"
 import NavProtector from "../components/navProtector"
 import SvgSwitch from "../components/SvgSwitch"
+import styled from "styled-components"
+import mixins from "../helpers/mixins"
+import AtomDesktop from "../components/home/AtomDesktop"
+import AtomMobile from "../components/home/AtomMobile"
+import DesktopSvg from "../components/home/DesktopSvg"
 
 // --- query ---
 export const query = graphql`
@@ -43,7 +48,7 @@ export const query = graphql`
   }
 `
 
-const IndexPage = ({ data }) => {
+export default function IndexPage({ data }) {
   // --- functions ---
   const getCardData = e => {
     const node = e.node
@@ -60,192 +65,120 @@ const IndexPage = ({ data }) => {
   return (
     <>
       <SEO title="Home" />
-      <div className="w-full">
-        <NavProtector type="main" />
-        {/* --- desktop --- */}
-        <div className="container md:mt-15 mt-10 mx-auto">
-          <svg
-            className="dark:hidden hidden md:block w-full h-auto"
-            viewBox="0 0 185 16"
-          >
-            <defs>
-              <linearGradient
-                id="rainbow"
-                x1="0"
-                x2="100%"
-                y1="0"
-                y2="0"
-                gradientUnits="userSpaceOnUse"
-              >
-                <stop stopColor="#FDB32D" offset="0%" />
-                <stop stopColor="#FF845F" offset="50%" />
-                <stop stopColor="#FF5F8A" offset="100%" />
-              </linearGradient>
-            </defs>
-            <text
-              className="hidden md:block"
-              fill="url(#rainbow)"
-              style={{ textAnchor: "middle" }}
-              x="50%"
-              y="15"
-            >
-              LEARN CREATE ENJOY
-            </text>
-          </svg>
-          {/* --- mobile --- */}
-          <svg
-            className="dark:hidden block md:hidden w-full h-auto"
-            style={{ textAnchor: "middle" }}
-            viewBox="0 0 65 60"
-          >
-            <defs>
-              <linearGradient
-                id="rainbowMobile"
-                x1="0"
-                x2="100%"
-                y1="0"
-                y2="0"
-                gradientUnits="userSpaceOnUse"
-              >
-                <stop stopColor="#FDB32D" offset="0%" />
-                <stop stopColor="#FF845F" offset="50%" />
-                <stop stopColor="#FF5F8A" offset="100%" />
-              </linearGradient>
-            </defs>
-            <text fill="url(#rainbowMobile)" x="50%" y="16">
-              LEARN
-            </text>
-            <text fill="url(#rainbowMobile)" x="50%" y="32">
-              CREATE
-            </text>
-            <text fill="url(#rainbowMobile)" x="50%" y="48">
-              ENJOY
-            </text>
-          </svg>
-          {/* --- --- DARK MODE --- --- */}
-          {/* --- desktop --- */}
-          <svg
-            className="hidden md:dark:block w-full h-auto"
-            style={{ textAnchor: "middle" }}
-            viewBox="0 0 185 16"
-          >
-            <defs>
-              <linearGradient
-                id="darkRainbow"
-                x1="0"
-                x2="100%"
-                y1="0"
-                y2="0"
-                gradientUnits="userSpaceOnUse"
-              >
-                <stop stopColor="#00ECA1" offset="0%" />
-                <stop stopColor="#6F84F4" offset="50%" />
-                <stop stopColor="#F256CC" offset="100%" />
-              </linearGradient>
-            </defs>
-            <text
-              className="hidden md:block"
-              fill="url(#darkRainbow)"
-              x="50%"
-              y="15"
-            >
-              LEARN CREATE ENJOY
-            </text>
-          </svg>
-          {/* --- mobile --- */}
-          <svg
-            className="dark:block md:dark:hidden hidden w-full h-auto"
-            style={{ textAnchor: "middle" }}
-            viewBox="0 0 65 60"
-          >
-            <defs>
-              <linearGradient
-                id="darkRainbowMobile"
-                x1="0"
-                x2="100%"
-                y1="0"
-                y2="0"
-                gradientUnits="userSpaceOnUse"
-              >
-                <stop stopColor="#00ECA1" offset="0%" />
-                <stop stopColor="#6F84F4" offset="50%" />
-                <stop stopColor="#F256CC" offset="100%" />
-              </linearGradient>
-            </defs>
-            <text fill="url(#darkRainbowMobile)" x="50%" y="16">
-              LEARN
-            </text>
-            <text fill="url(#darkRainbowMobile)" x="50%" y="32">
-              CREATE
-            </text>
-            <text fill="url(#darkRainbowMobile)" x="50%" y="48">
-              ENJOY
-            </text>
-          </svg>
-        </div>
-        {/* --- atom desktop --- */}
-        <div className="hidden md:block container mx-auto fill-current text-red-500 dark:text-blue-400">
-          <div className="md:h-108 md:w-108 relative mx-auto my-12">
-            <div className="absolute transform -translate-y-2/4 pulse-dot -translate-x-2/4 inset-y-2/4 inset-x-2/4 h-24 w-24 rounded-full bg-red-500 dark:bg-blue-400"></div>
-            <div className="absolute top-0 left-0 pulse-circle md:h-108 md:w-108 rounded-full bg-red-500 dark:bg-blue-400"></div>
-            <div className="absolute top-0 left-0 pulse-circle md:h-108 md:w-108 rounded-full bg-red-500 dark:bg-blue-400"></div>
-            <div className="absolute top-0 left-0 pulse-circle md:h-108 md:w-108 rounded-full bg-red-500 dark:bg-blue-400"></div>
-            {["React", "CSS", "Gatsby", "Nextjs", "Node", "Git"].map(
-              svgName => (
-                <div className="flex items-center justify-center circle-around absolute m-auto inset-0 md:w-14 md:h-14 bg-white dark:bg-gray-800 rounded-full">
-                  <SvgSwitch svgName={svgName} />
-                </div>
-              )
-            )}
-          </div>
-        </div>
-        {/* --- mobile atom scroll --- */}
-        <div className="flex gap-4 relative md:hidden w-full h-16 overflow-hidden fill-current text-red-500 dark:text-blue-400">
-          {["React", "CSS", "Gatsby", "Nextjs", "Node", "Git"].map(svgName => (
-            <div className="flex items-center justify-center scroll-along absolute w-14 h-14 bg-white dark:bg-gray-800 rounded-full">
-              <SvgSwitch svgName={svgName} />
-            </div>
-          ))}
-        </div>
-      </div>
-      <div className="bg-white dark:bg-gray-800 w-full pb-15 my-8">
+      <Hero />
+      <AboutContainer>
         <NavProtector type="accent" />
-        <div className="container mx-auto px-4 pt-0">
-          <h2 className=" text-4xl font-semibold">About me</h2>
-          <div className="md:flex gap-8">
-            <p className="flex-grow">{index}</p>
-          </div>
-        </div>
-      </div>
+        <AboutContent>
+          <AboutHeader>About me</AboutHeader>
+          <p>{index}</p>
+        </AboutContent>
+      </AboutContainer>
       <NavProtector type="main" />
-      <div className="container mx-auto my-8 mt-0">
-        <div className="px-4 flex justify-between items-baseline">
-          <h2 className="mb-9 text-4xl font-semibold">Posts</h2>
-          <Link className="h-6 mb-9 text-lg" to="/posts">
-            See all posts
-          </Link>
-        </div>
-        <div className="p-4 grid grid-rows-1 grid-cols-post-display-mobile md:grid-cols-post-display gap-8 md:overflow-x-auto overflow-x-scroll">
+      <PageSectionContainer style={{ marginTop: 0 }}>
+        <PageTitleContainer>
+          <PageTitle>Posts</PageTitle>
+          <PageLink to="/posts">See all posts</PageLink>
+        </PageTitleContainer>
+        <CardGrid>
           {posts.map(p => (
             <PostCard key={p.title} post={p} toPage="posts" />
           ))}
-        </div>
-      </div>
-      <div className="container mx-auto my-8 mb-15">
-        <div className="px-4 flex justify-between items-baseline">
-          <h2 className="mb-9 text-4xl font-semibold">Projects</h2>
-          <Link className="h-6 mb-9 text-lg" to="/projects">
-            See all projects
-          </Link>
-        </div>
-        <div className="p-4 grid grid-rows-1 grid-cols-post-display-mobile md:grid-cols-post-display gap-8 md:overflow-x-auto overflow-x-scroll">
+        </CardGrid>
+      </PageSectionContainer>
+      <PageSectionContainer style={{ marginBottom: "3.75rem" }}>
+        <PageTitleContainer>
+          <PageTitle>Projects</PageTitle>
+          <PageLink to="/projects">See all projects</PageLink>
+        </PageTitleContainer>
+        <CardGrid>
           {projects.map(p => (
             <PostCard key={p.title} post={p} toPage="projects" />
           ))}
-        </div>
-      </div>
+        </CardGrid>
+      </PageSectionContainer>
     </>
   )
 }
 
-export default IndexPage
+// --- styled components ---
+const AboutContainer = styled.div`
+  background-color: white;
+  margin: 2rem 0;
+  width: 100%;
+  padding-bottom: 3.75rem;
+
+  .dark & {
+    background-color: var(--gray-800);
+  }
+`
+
+const AboutContent = styled.div`
+  ${mixins.container}
+  margin: 0 auto;
+  padding: 0 1rem;
+`
+
+const AboutHeader = styled.div`
+  font-size: 2.25rem /* 36px */;
+  line-height: 2.5rem /* 40px */;
+  font-weight: 600;
+  margin-bottom: 1rem;
+`
+
+const PageSectionContainer = styled.div`
+  ${mixins.container}
+  margin: 2rem auto;
+  margin-bottom: 3.75rem;
+`
+
+const PageTitleContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0 1rem;
+`
+
+const PageTitle = styled.h2`
+  font-size: 2.25rem /* 36px */;
+  line-height: 2.5rem /* 40px */;
+  font-weight: 600;
+  margin-bottom: 2.25rem /* 36px */;
+`
+
+const PageLink = styled(Link)`
+  font-size: 1.125rem /* 18px */;
+  line-height: 1.75rem /* 28px */;
+  height: 1.5rem;
+  margin-bottom: 2.25rem;
+`
+
+const CardGrid = styled.div`
+  padding: 1rem;
+  display: grid;
+  grid-template-rows: repeat(1, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(300px, 1fr));
+  gap: 2rem;
+  overflow-x: scroll;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, minmax(475px, 1fr));
+    overflow-x: auto;
+  }
+`
+
+// @ Hero @
+function Hero() {
+  return (
+    <HeroContainer>
+      <NavProtector type="main" />
+      <DesktopSvg />
+      <AtomDesktop />
+      <AtomMobile />
+    </HeroContainer>
+  )
+}
+
+// --- hero styled components ---
+const HeroContainer = styled.div`
+  width: 100%;
+`
