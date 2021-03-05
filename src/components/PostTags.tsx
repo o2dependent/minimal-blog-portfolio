@@ -1,7 +1,6 @@
 import { Link } from "gatsby"
 import React, { useEffect, useState } from "react"
 import styled from "styled-components"
-import colors from "../helpers/colors"
 
 export type T_Tags = "React" | "CSS" | "Gatsby" | "Nextjs" | "Node" | "Git"
 
@@ -66,12 +65,12 @@ const Tag = styled.button<{ active: boolean }>`
   line-height: 1.25rem;
   opacity: ${p => (p.active ? 1 : 0.7)};
   padding: 0.5rem 1rem;
-  background-color: ${colors.white};
+  background-color: white;
   border-radius: 9999px;
-  box-shadow: ${p => (p.active ? `0px 0px 0px 1px ${colors.gray[400]}` : "")};
+  box-shadow: ${p => (p.active ? `0px 0px 0px 1px var(--gray-400)` : "")};
 
   .dark & {
-    background-color: ${colors.gray[800]};
+    background-color: var(--gray-800);
   }
 
   &:hover {
@@ -87,11 +86,11 @@ const LinkTag = styled(Link)`
   line-height: 1.25rem;
   opacity: 0.7;
   padding: 0.5rem 1rem;
-  background-color: ${colors.white};
+  background-color: white;
   border-radius: 9999px;
 
   .dark & {
-    background-color: ${colors.gray[800]};
+    background-color: var(--gray-800);
   }
 
   &:hover {
