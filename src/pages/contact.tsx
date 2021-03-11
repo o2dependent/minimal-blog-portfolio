@@ -157,10 +157,12 @@ const Button = styled.button`
 
 const Input = styled.input`
   width: 100%;
+  border: none;
 `
 
 const TextArea = styled.textarea`
   width: 100%;
+  border: none;
 `
 
 const Alert = styled.p`
