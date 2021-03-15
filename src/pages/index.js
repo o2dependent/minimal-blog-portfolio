@@ -118,10 +118,10 @@ const AboutContent = styled.div`
   padding: 0 1rem;
 `
 
-const AboutHeader = styled.div`
+const AboutHeader = styled.h1`
   font-size: 2.25rem /* 36px */;
   line-height: 2.5rem /* 40px */;
-  font-weight: 600;
+  font-weight: 500;
   margin-bottom: 1rem;
 `
 
@@ -141,7 +141,7 @@ const PageTitleContainer = styled.div`
 const PageTitle = styled.h2`
   font-size: 2.25rem /* 36px */;
   line-height: 2.5rem /* 40px */;
-  font-weight: 600;
+  font-weight: 500;
   margin-bottom: 2.25rem /* 36px */;
 `
 

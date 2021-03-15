@@ -1,7 +1,6 @@
 import { Link } from "gatsby"
 import React from "react"
-import styled from "styled-components"
-import colors from "../../helpers/colors"
+import styled, { keyframes } from "styled-components"
 import mixins from "../../helpers/mixins"
 
 export default function DesktopNav({ toggleDarkMode }) {
@@ -79,12 +78,11 @@ const Button = styled(Link)`
   justify-content: center;
   font-weight: 500;
   border-radius: 0.25rem;
-  color: ${colors.gray[200]};
-  background-color: ${colors.main.light};
+  color: var(--gray-200);
+  background-color: var(--main);
 
   .dark & {
-    background-color: ${colors.main.dark};
-    color: ${colors.gray[900]};
+    color: var(--gray-900);
   }
 `
 

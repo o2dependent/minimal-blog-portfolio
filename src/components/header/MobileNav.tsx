@@ -48,8 +48,8 @@ export default function MobileNav({ toggleDarkMode }) {
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="100%"
-            height="100%"
+            width="24"
+            height="24"
             viewBox="0 0 24 24"
             fill="currentColor"
           >
@@ -139,8 +139,6 @@ const NavLink = styled(Link)`
 `
 
 const MenuButton = styled.button`
-  height: 1.75rem;
-  width: 1.75rem;
   transition: transform 250ms ease;
 
   &:focus {
@@ -150,8 +148,6 @@ const MenuButton = styled.button`
 `
 
 const DarkButton = styled.button`
-  height: 1.75rem;
-  width: 1.75rem;
   align-items: center;
   justify-content: center;
   display: none;
@@ -168,8 +164,6 @@ const DarkButton = styled.button`
 `
 
 const LightButton = styled.button`
-  height: 1.75rem;
-  width: 1.75rem;
   align-items: center;
   justify-content: center;
   display: flex;

@@ -2,7 +2,6 @@ import React, { useState } from "react"
 import styled from "styled-components"
 import NavProtector from "../components/navProtector"
 import SEO from "../components/seo"
-import colors from "../helpers/colors"
 import mixins from "../helpers/mixins"
 
 // --- encode for netlify form ---
@@ -115,7 +114,7 @@ const Title = styled.h1`
 const Text = styled.p`
   margin: 0 auto;
   text-align: center;
-  color: ${colors.gray[400]};
+  color: var(--gray-400);
 `
 
 const Form = styled.form`
@@ -148,32 +147,32 @@ const Button = styled.button`
   justify-content: center;
   font-weight: 500;
   border-radius: 0.25rem;
-  color: ${colors.gray[200]};
-  background-color: ${colors.main.light};
+  color: var(--gray-200);
+  background-color: var(--main);
 
   .dark & {
-    background-color: ${colors.main.dark};
-    color: ${colors.gray[900]};
+    color: var(--gray-900);
   }
 `
 
 const Input = styled.input`
   width: 100%;
+  border: none;
 `
 
 const TextArea = styled.textarea`
   width: 100%;
+  border: none;
 `
 
 const Alert = styled.p`
   border-radius: 0.25rem;
   padding: 1rem;
-  background-color: ${colors.main.light};
+  background-color: var(--main);
   font-weight: 500;
-  color: ${colors.gray[200]};
+  color: var(--gray-200);
 
   .dark & {
-    background-color: ${colors.main.dark};
-    color: ${colors.gray[900]};
+    color: var(--gray-900);
   }
 `
